@@ -1,71 +1,54 @@
-# 📄 CV Dinâmico com React + Vite
+# React + TypeScript + Vite
 
-Este é um projeto de currículo (CV) dinâmico desenvolvido com **React** e **Vite**, pensado para ser simples, moderno e facilmente personalizável.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## 🔧 Tecnologias Utilizadas
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- **[React](https://reactjs.org/):** Biblioteca JavaScript para construir interfaces de usuário.
-- **[Vite](https://vitejs.dev/):** Ferramenta rápida de build e dev server.
-- **JavaScript (ES6+)**
-- **CSS** ou **TailwindCSS** (a definir no estilo final)
+## Expanding the ESLint configuration
 
----
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## 📁 Estrutura do Projeto
-
-```plaintext
-src/
-├── components/     # Componentes reutilizáveis (Header, Card, etc.)
-├── pages/          # Páginas do CV (Home, Experiência, etc.)
-├── data/           # Dados do currículo (em JSON ou JavaScript)
-├── App.jsx         # Componente raiz
-└── main.jsx        # Ponto de entrada do React
-```
----
-## 🚀 Como Rodar o Projeto
-
-1. Clone o repositório:
-
-```bash
-git clone https://github.com/seu-usuario/cv-dinamico.git
-cd cv-dinamico
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-2. Instale as dependências:
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```bash
-npm install
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
 ```
-
-3. Inicie o servidor de desenvolvimento:
-
-```bash
-npm run dev
-```
-
-4. Acesse no navegador:
-
-```
-http://localhost:5173
-```
-
----
-
-## 🧩 Funcionalidades Planejadas
-
-- Página inicial com nome e título profissional
-- Sessões de:
-  - Experiências profissionais
-  - Habilidades técnicas
-  - Formação acadêmica
-- Dados carregados dinamicamente (possivelmente via JSON)
-- Design responsivo
-
----
-
-## ✍️ Autor
-
-
-Projeto pessoal para praticar React e construir um currículo digital moderno.
