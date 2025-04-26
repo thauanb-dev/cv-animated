@@ -14,7 +14,7 @@ export default function App(){
         <Contato/>
         <div className='flex justify-center mt-4'>
           <Avatar className=' w-64 h-64 mb-4 '>
-            <AvatarImage src="/public/avatar.jpeg"/>
+            <AvatarImage src="/avatar.jpeg"/>
           </Avatar>
         </div>
         <Badges/>
