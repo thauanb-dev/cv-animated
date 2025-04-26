@@ -1,10 +1,9 @@
 import './App.css'
 import Contato from './objs/Contato'
 import Badges from './objs/Badges'
+import Cards from './objs/Cards'
 import { Avatar, AvatarImage } from "@/components/ui/avatar"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription  } from '@/components/ui/card'
 import { Separator } from "@/components/ui/separator";
-import { Badge } from 'lucide-react'
 
 export default function App(){
   return(
@@ -18,6 +17,7 @@ export default function App(){
           </Avatar>
         </div>
         <Badges/>
+        <Cards/>
       </div>
 
     </main>
